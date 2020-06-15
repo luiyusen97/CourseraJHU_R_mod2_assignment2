@@ -16,9 +16,6 @@ getdataframe <- function(directory = 'rawdata', file_selector){
 
 colnames_check <- function(outcome_arg){
     arg_list <- c("heart attack", "heart failure", "pneumonia")
-    # colnames_list <- c("Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack",
-    #                   "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure",
-    #                   "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia")
     if (outcome_arg == arg_list[1]){
         outcome_arg = 3L
     } else if (outcome_arg == arg_list[2]){
@@ -30,13 +27,6 @@ colnames_check <- function(outcome_arg){
     }
     return(outcome_arg)
 }
-
-# state_check <- function(state_arg, outcomes_dat){
-#     if !(state_arg %in% outcomes_dat[ , "State"]){
-#         stop("Invalid state")
-#     }
-#     
-# }
 
 state_check <- function(state_arg, outcomes_dat){
     if (state_arg %in% outcomes_dat[ , "State"]){
