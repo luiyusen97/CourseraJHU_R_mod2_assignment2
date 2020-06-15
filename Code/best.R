@@ -66,8 +66,11 @@ best <- function(state, outcome) {
     min_mortrate <- min(outcomes_dat[outcomes_dat$State == state, outcome], na.rm = T)
     print(min_mortrate)
     
-    best_hospital <- outcomes_dat[outcomes_dat$State == state, outcomes_dat[ , outcome] == min_mortrate]
-    
+    best_hospital <- outcomes_dat[which(outcomes_dat[ , outcome] == min_mortrate) , ]
+    best_hospital <- best_hospital[which(best_hospital$State == state), ]
+    hospital_name <- best_hospital[ , "Hospital.Name"]
+    hosp_mortrate <- best_hospital[ , outcome]
+    return(c(hospital_name, as.character(hosp_mortrate)))
 }
 
 #testing=======================================================================
